@@ -2,7 +2,7 @@
 	padding:0px;
 	margin-left:3%;
 	position:relative;
-	border:1px solid green;
+/*	border:1px solid green;*/
 	width:52%;
 	min-width:300px;
 	z-index:1;
@@ -20,6 +20,7 @@
 	border:0px solid red;
 	margin:0%;
 	position:relative;
+	width:100%;
 }
 .slide-bar-section{
 	border-bottom: 1px solid #D6D3D3;
@@ -39,14 +40,36 @@
 }
 
 #time-range-option{
+	background:transparent;
+	height:32.5px;
+	width:85px;
+	padding:6px;
+	padding-left:10px;
+	font-size:15px;
+	border-color:#D6D3D3;
+	-webkit-appearance:none;
+	-webkit-text-align:center;
+	-webkit-border-radius:0;
+	background:url('../images/icons/arrow_icon.png') no-repeat right 2px center;
+	background-size:20px 24px;
+}
+.time-range-option-div{
+	top:10px;	
 }
 #time-range{
 }
 .checkbox-section{
+/*	border-bottom: 1px solid #D6D3D3;*/
+	height:auto;
+	top:10px;
+	position:relative;
+	width:100%;
+	font-size:15px;
 }
 #place-type{
 }
 .check-element{
+	margin-left:5px;
 }
 #hangout-check{
 }
@@ -58,5 +81,14 @@
 }
 #event-check{
 }
-
-
+/*
+#division-line{
+	border:0;
+	height:1px;
+	background:#D6D3D3;
+	position:relative;
+	width:200%;
+	left:-6%;
+	top:10px;
+	z-index:10;
+}*/
