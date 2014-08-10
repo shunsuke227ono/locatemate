@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+	<meta charset="utf-8">
+	<title>Locate Mate</title>
+	<link rel="stylesheet" type="text/css" href="../assets/stylesheets/general.css">
+	<link rel="stylesheet" type="text/css" href="../assets/stylesheets/nav-bar.css">
+	<link rel="stylesheet" type="text/css" href="../assets/stylesheets/map-part.css">
+	<link rel="stylesheet" type="text/css" href="../assets/stylesheets/filter-part.css">
+	<link rel="stylesheet" type="text/css" href="../assets/stylesheets/slider.css">
+	<link rel="stylesheet" type="text/css" href="../assets/stylesheets/result-part.css">
+	<script type="text/javascript" src="../assets/javascripts/nav-bar.js"></script>
+	<script type="text/javascript" src="../assets/javascripts/map.js"></script>
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_kkarAQJkC63z6YbLxY72huK1sc_Sxt0"></script>
+	<script type="text/javascript" src="../assets/javascripts/filter.js" ></script>
+    <script type="text/javascript">
+      function initialize() {
+         var mapOptions = {
+            center: new google.maps.LatLng(-34.397, 150.644),
+	          zoom: 8
+ 	       };
+         var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+   	 }
+      google.maps.event.addDomListener(window, 'load', initialize);
+      </script>
+</head>
+
+<body>
+
+	<div id="navigation-base">
+		<div id="navigation-bar">
+			<a href="" class="pull-left" id="logo">
+				<img src="../assets/images/icons/main_logo.png" alt=""  id="logo-img">
+				<span id="logo-char">Locate Mate</span>
+			</a>
+			<!--for logo.-->
+			<ul class="nav pull-left" id="search-from-header">
+				<li id="search-option-list" class="dropdown search-set">
+					<select id="search-option">
+						<option value="friend" class="each-option">Friend</option>
+						<option value="place" class="each-option">Place</option>
+					</select>
+				</li>
+				<li id="header-search" class="search-set">
+					<form class="search-box search-set">
+						<!--memo: inlineはinlineにしたいものが含む全てのclassに適用される必要ある-->
+						<!--cf;https://www.udemy.com/blog/search-box-css/-->
+						<input name="location" type="text" placeholder="Locate Mate!" autocomplete="off" id="search-box-material">
+					</form>
+				</li>
+<!--			<li id="search-browse" class="dropdown search-set">
+					<a class="dropdown-toggle link-reset" href="">Browse<img src=""></a>
+					<select id="browse-menu">
+						<option value="close-friend">Close Friends</option>
+						<option value="popular">Popular</option>
+						<option value="other">Other</option>
+					</select>
+				</li>-->
+				<!-- cut browse function for minimum product.-->
+			</ul>
+
+			<span id="help" class="nav pull-right">
+				<a class="link-reset" href="">Help<img src=""></a>
+			</span>
+			<span id="continue-facebook" class="nav pull-right">
+				<a href="" class="link-reset"><img src="../assets/images/icons/connect_facebook_icon.png" id="connect_facebook_img">
+				</a>
+			</span>
+		</div>
+	</div>
+
+	<div class="map-search">
+		<div class="map pull-left">
+			<div id="map-test"></div>
+			<!--このへんなんでかわかんないけど前にdiv置いたらうまくいった...。-->
+			<div id="map-fixed">
+				<div id="map-canvas"></div>
+			</div>
+		</div>
+		<div class="filter-result pull-left">
+			<div class="filters">
+				<div class="filter-section slide-bar-section" id="friend-range-section">
+					<div class="row">
+						<div class="filter-label">
+				<!--		<img src="../assets/images/icons/people_icon.png" alt="" id="people-icon">-->
+							<p class="">People Range</p>
+						</div>
+						<div id="friend-range" class="">
+							<input type="range" id="friend-range-input" class="slide-bar" min="1" max="3" value="1" step="1" onchange="showFriendRange(friend-range-value.value);" />
+					<!--		<span class="highlight"></span> -->
+							<output id="friend-range-value">1</output>
+						</div>
+					</div>
+				</div>
+				<div class="filter-section slide-bar-section" id="time-range-section">
+					<div calss="row">
+						<div class="filter-label">
+							<p>Time Range</p>
+						</div>
+						<div id="time-range">
+							<input type="range" id="time-rangie-input" class="slide-bar" min="1" max="7" value="1" step="1" onchange="showTimeRange(this.value);" />
+						</div>
+						<select id="time-range-option">
+							<option value="7days">7days</option>
+							<option value="1month">1month</option>
+						</select>
+						<span id="time-range-value">1</span>
+					</div>
+				</div>
+				<div class="filter-section checkbox-section" id="place-type">
+					<div class="row">
+						<div class="filter-label col-3">
+							<label>Post Type</label>
+						</div>
+						<div class="check-element col-8">
+							<div class="row">
+								<div class="col-4">
+									<label id="hangout-check" class="checkbox">
+										<div class="col-2">
+											<input type="checkbox" name="place-type" value="hangout">
+										</div>
+										<div class="col-8 text-center">
+											<img src="http://lorempixel.com/65/65/nightlife">
+											<div>Hang out</div>
+										</div>
+										<div class="col-2">
+										</div>
+									</label>
+								</div>
+								<div class="col-4">
+									<label id="food-check" class="checkbox">
+										<div class="col-2">
+											<input type="checkbox" name="place-type" value="food">
+										</div>
+										<div class="col-8 text-center">
+											<img src="http://lorempixel.com/65/65/food">
+											<div>Food</div>
+										</div>
+										<div class="col-2">
+										</div>
+									</label>
+								</div>
+								<div class="col-4">
+									<label id="event-check" class="checkbox">
+										<div class="col-2">
+											<input type="checkbox" name="place-type" value="event">
+										</div>
+										<div class="col-8 text-center">
+											<img src="http://lorempixel.com/65/65/fashion">
+											<div>Event</div>
+										</div>
+										<div class="col-2">
+										</div>
+									</label>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="search-result">
+				<div class="search-result-header">
+				</div>
+				<div class="search-result-container">
+					<div class="row listings-container">
+						<div class="listing">
+							<div class="panel-image">
+								<a href="">
+									<img src="http://lorempixel.com/250/150/nightlife" id="listing-img">
+								</a>
+							</div>
+							<div class="panel-bpdy">
+								<a href="">
+									<img src="http://lorempixel.com/35/35/nightlife" id="listing-like">
+								</a>
+								<a href="">
+									<img src="http://lorempixel.com/35/35/people" id="listing-profile-img">
+								</a>
+								<a href="">
+									<img src="http://lorempixel.com/35/35/fashion" id="listing-pin">
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="search-result-footer">
+					<div class="pagination-bottons-container">
+						<div class="results_count">
+							<p>1-2 of 12 people</p>
+						</div>
+						<div class="pagination">
+							<ul class="pagination-list">
+								<li class="active">
+									<a href="" target="1">
+										1
+									</a>
+								</li>
+								<li>
+									<a href="" target="2">
+										2
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>
+

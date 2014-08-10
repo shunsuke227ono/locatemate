@@ -1,0 +1,49 @@
+html{
+	height:100%;
+	width:100%;
+	margin:0;
+	padding:0;
+	z-index:1;
+	min-width:900px;
+}
+body{
+	position:absolute;
+	z-index:4;
+	width:100%;
+	min-width:900px;
+	height:100%;
+	margin:0;
+	padding:0;
+	font-family:'Gulim';
+	/*全体のfontをここで指定して統一*/
+/*	background-color:blue;*/
+}
+
+.pull-left{
+	position:relative;
+	float:left;
+}
+.pull-right{
+	position:relative;
+	float:right;
+}
+.dropdown{
+}
+
+.dropdown-toggle{
+}
+.dropdown-menu{
+}
+.link-reset{
+}
+.row{
+}
+.col-2{
+}
+.col-3{
+}
+.col-4{
+}
+.col-8{
+}
+
