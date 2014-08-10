@@ -1,0 +1,62 @@
+.filter-result{
+	padding:0px;
+	margin-left:3%;
+	position:relative;
+	border:1px solid green;
+	width:52%;
+	min-width:300px;
+	z-index:1;
+	background-color:#f8f8f8;
+}
+.filters{
+	border:0px solid black;
+	margin:0%;
+	/*just for making it visible:*/
+	position:relative;
+	width:100%;
+	min-width:300px;
+}
+.filter-section{
+	border:0px solid red;
+	margin:0%;
+	position:relative;
+}
+.slide-bar-section{
+	border-bottom: 1px solid #D6D3D3;
+	height:auto;
+	top:10px;
+	position:relative;
+	width:100%;
+	font-size:15px;
+}
+#friend-range-section{
+}
+.filter-label{
+}
+#friend-range{
+}
+.slide-bar{
+}
+
+#time-range-option{
+}
+#time-range{
+}
+.checkbox-section{
+}
+#place-type{
+}
+.check-element{
+}
+#hangout-check{
+}
+.checkbox{
+}
+.text-center{
+}
+#food-check{
+}
+#event-check{
+}
+
+
