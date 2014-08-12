@@ -2,12 +2,16 @@
 	padding:0px;
 	margin-left:3%;
 	position:relative;
-	border:1px solid green;
+/*	border:1px solid green;*/
 	width:52%;
+	height:auto;
 	min-width:300px;
-	z-index:1;
+	z-index:2;
 	background-color:#f8f8f8;
 }
+.filter-header{
+}
+
 .filters{
 	border:0px solid black;
 	margin:0%;
@@ -20,10 +24,11 @@
 	border:0px solid red;
 	margin:0%;
 	position:relative;
+	width:100%;
 }
 .slide-bar-section{
 	border-bottom: 1px solid #D6D3D3;
-	height:auto;
+	height:100px;
 	top:10px;
 	position:relative;
 	width:100%;
@@ -31,32 +36,77 @@
 }
 #friend-range-section{
 }
-.filter-label{
+.body-font{
+	color:#333333;
 }
 #friend-range{
 }
 .slide-bar{
 }
+.slider-label-friend{
+}
+.slider-label-friend2{
+	left:5%;
+}
+.slider-label-everyone{
+	left:10%;
+}
 
 #time-range-option{
+	background:transparent;
+	height:32.5px;
+	width:85px;
+	padding-left:10px;
+	font-size:13px;
+	border-color:#D6D3D3;
+	-webkit-appearance:none;
+	-webkit-text-align:center;
+	-webkit-border-radius:0;
+	background:url('../images/icons/arrow_icon.png') no-repeat right 2px center;
+	background-size:20px 24px;
+}
+.time-range-option-div{
+	position:relative;
+	top:5px;
+	left:15px;
 }
 #time-range{
 }
 .checkbox-section{
+/*	border-bottom: 1px solid #D6D3D3;*/
+	height:auto;
+	top:10px;
+	position:relative;
+	width:100%;
+	font-size:15px;
 }
+#label-post-type{
+	position:relative;
+	top:15px;
+}
+
 #place-type{
 }
 .check-element{
+	margin-left:27%;
 }
 #hangout-check{
 }
 .checkbox{
 }
-.text-center{
-}
+
 #food-check{
 }
 #event-check{
 }
-
-
+/*
+#division-line{
+	border:0;
+	height:1px;
+	background:#D6D3D3;
+	position:relative;
+	width:200%;
+	left:-6%;
+	top:10px;
+	z-index:10;
+}*/

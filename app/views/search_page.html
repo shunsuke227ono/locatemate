@@ -17,8 +17,8 @@
     <script type="text/javascript">
       function initialize() {
          var mapOptions = {
-            center: new google.maps.LatLng(-34.397, 150.644),
-	          zoom: 8
+            center: new google.maps.LatLng(-34.933,138.5978757),
+	          zoom: 10
  	       };
          var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
    	 }
@@ -61,17 +61,17 @@
 			</ul>
 
 			<span id="help" class="nav pull-right">
-				<a class="link-reset" href="">Help<img src=""></a>
+				<a class="link-reset" href="">Help</a>
 			</span>
 			<span id="continue-facebook" class="nav pull-right">
-				<a href="" class="link-reset"><img src="../assets/images/icons/connect_facebook_icon.png" id="connect_facebook_img">
+				<a href="" class="link-reset"><img src="../assets/images/icons/connect_facebook_icon.png" id="connect_facebook_img" alt="">
 				</a>
 			</span>
 		</div>
 	</div>
 
 	<div class="map-search">
-		<div class="map pull-left">
+		<div class="map-section pull-left">
 			<div id="map-test"></div>
 			<!--このへんなんでかわかんないけど前にdiv置いたらうまくいった...。-->
 			<div id="map-fixed">
@@ -79,126 +79,215 @@
 			</div>
 		</div>
 		<div class="filter-result pull-left">
+			<div class="filters-header header-section">
+				<p class="header-section-title">Filters</p>
+			</div>
 			<div class="filters">
 				<div class="filter-section slide-bar-section" id="friend-range-section">
 					<div class="row">
-						<div class="filter-label">
-				<!--		<img src="../assets/images/icons/people_icon.png" alt="" id="people-icon">-->
-							<p class="">People Range</p>
+						<div class="body-font col-3">
+							<p>People</p>
 						</div>
-						<div id="friend-range" class="">
-							<input type="range" id="friend-range-input" class="slide-bar" min="1" max="3" value="1" step="1" onchange="showFriendRange(friend-range-value.value);" />
-					<!--		<span class="highlight"></span> -->
-							<output id="friend-range-value">1</output>
+						<div class="col-8 slider-wrapper">
+								<div class="row">
+									<div class="col-4 text-left slider-label-friend">
+										<p class="body-font">Friends</p>
+									</div>
+									<div class="col-4 text-center slider-label-friend2">
+										<p class="body-font">Friends'Friends</p>
+									</div>
+									<div class="col-4 text-right slider-label-everyone">
+										<p class="body-font">Every one</p>
+									</div>
+								</div>
+							<div class="slider">
+								<input class="bar" type="range" id="rangeinput" min="1" max="3" value="1" onchange="friendvalue.value=value"/>
+							</div>
 						</div>
 					</div>
 				</div>
 				<div class="filter-section slide-bar-section" id="time-range-section">
-					<div calss="row">
-						<div class="filter-label">
-							<p>Time Range</p>
+					<div class="row">
+						<div class="body-font col-3">
+							<p>Time</p>
 						</div>
-						<div id="time-range">
-							<input type="range" id="time-rangie-input" class="slide-bar" min="1" max="7" value="1" step="1" onchange="showTimeRange(this.value);" />
+						<div class="col-8 slider-wrapper">
+							<div class="row">
+								<div class="col-6 text-left">
+									<p class="body-font">Now</p>
+								</div>
+								<div class="col-6 text-right time-range-option-div">
+									<select id="time-range-option">
+										<option value="1week" class="body-font">1week</option>
+										<option value="1month" class="body-font">1month</option>
+										<option value="1year" class="body-font">1year</option>
+									</select>
+								</div>
+							</div>
+							<div class="slider">
+								<input class="bar" type="range" id="rangeinput" min="1" max="10" value="1" onchange="timevalue.value=value"/>
+								<output id="timevalue"></output>
+							</div>
 						</div>
-						<select id="time-range-option">
-							<option value="7days">7days</option>
-							<option value="1month">1month</option>
-						</select>
-						<span id="time-range-value">1</span>
+						<div class="col-2">
+						</div>
 					</div>
 				</div>
 				<div class="filter-section checkbox-section" id="place-type">
 					<div class="row">
-						<div class="filter-label col-3">
-							<label>Post Type</label>
+						<div class="body-font col-3">
+							<label id="label-post-type">Post Type</label>
 						</div>
 						<div class="check-element col-8">
 							<div class="row">
 								<div class="col-4">
-									<label id="hangout-check" class="checkbox">
-										<div class="col-2">
+								<!--	<label id="hangout-check" class="checkbox">-->
+									<div class="row">
+										<div class="col-2 checkbox-type">
 											<input type="checkbox" name="place-type" value="hangout">
 										</div>
 										<div class="col-8 text-center">
-											<img src="http://lorempixel.com/65/65/nightlife">
-											<div>Hang out</div>
+											<img src="../assets/images/icons/hangout_icon.png" alt="">
+											<div class="body-font">Hang out</div>
 										</div>
 										<div class="col-2">
 										</div>
-									</label>
+									</div>
+								<!--	</label>-->
 								</div>
 								<div class="col-4">
-									<label id="food-check" class="checkbox">
-										<div class="col-2">
+								<!--	<label id="food-check" class="checkbox">-->
+									<div class="row">
+										<div class="col-2 checkbox-type">
 											<input type="checkbox" name="place-type" value="food">
 										</div>
 										<div class="col-8 text-center">
-											<img src="http://lorempixel.com/65/65/food">
-											<div>Food</div>
+											<img src="../assets/images/icons/food_icon.png" alt="">
+											<div class="body-font">Food</div>
 										</div>
 										<div class="col-2">
 										</div>
-									</label>
+									</div>
+								<!--	</label>-->
 								</div>
 								<div class="col-4">
-									<label id="event-check" class="checkbox">
-										<div class="col-2">
+								<!--	<label id="event-check" class="checkbox">-->
+									<div class="row">
+										<div class="col-2 checkbox-type">
 											<input type="checkbox" name="place-type" value="event">
 										</div>
 										<div class="col-8 text-center">
-											<img src="http://lorempixel.com/65/65/fashion">
-											<div>Event</div>
+											<img src="../assets/images/icons/event_icon.png" alt="">
+											<div class="body-font">Event</div>
 										</div>
 										<div class="col-2">
 										</div>
-									</label>
+									</div>
+								<!--	</label>-->
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
+			
+<!--			<div id="division-line"></div>-->
+			
 			<div class="search-result">
-				<div class="search-result-header">
+				<div class="header-section">
+					<p class="header-section-title">Photo Feed</p>
 				</div>
 				<div class="search-result-container">
 					<div class="row listings-container">
-						<div class="listing">
+						<div class="listing col-5">
 							<div class="panel-image">
 								<a href="">
-									<img src="http://lorempixel.com/250/150/nightlife" id="listing-img">
+									<img src="http://lorempixel.com/960/720/nightlife" id="listing-img" alt="">
 								</a>
 							</div>
-							<div class="panel-bpdy">
+							<div class="panel-body">
 								<a href="">
-									<img src="http://lorempixel.com/35/35/nightlife" id="listing-like">
+									<img src="../assets/images/icons/like_icon.png" id="listing-like" alt="">
 								</a>
 								<a href="">
-									<img src="http://lorempixel.com/35/35/people" id="listing-profile-img">
+									<img src="https://s3.amazonaws.com/uifaces/faces/twitter/salleedesign/48.jpg" id="listing-profile-img" alt="">
 								</a>
 								<a href="">
-									<img src="http://lorempixel.com/35/35/fashion" id="listing-pin">
+									<img src="../assets/images/icons/pin_icon.png" id="listing-pin" alt="">
+								</a>
+							</div>
+						</div>
+						<div class="listing col-5">
+							<div class="panel-image">
+								<a href="">
+									<img src="http://lorempixel.com/960/720/food" id="listing-img" alt="">
+								</a>
+							</div>
+							<div class="panel-body">
+								<a href="">
+									<img src="../assets/images/icons/like_icon.png" id="listing-like" alt="">
+								</a>
+								<a href="">
+									<img src="https://s3.amazonaws.com/uifaces/faces/twitter/_victa/48.jpg" id="listing-profile-img" alt="">
+								</a>
+								<a href="">
+									<img src="../assets/images/icons/pin_icon.png" id="listing-pin" alt="">
+								</a>
+							</div>
+						</div>
+						<div class="listing col-5">
+							<div class="panel-image">
+								<a href="">
+									<img src="http://lorempixel.com/960/720/sports" id="listing-img" alt="">
+								</a>
+							</div>
+							<div class="panel-body">
+								<a href="">
+									<img src="../assets/images/icons/like_icon.png" id="listing-like" alt="">
+								</a>
+								<a href="">
+									<img src="https://s3.amazonaws.com/uifaces/faces/twitter/peterlandt/48.jpg" id="listing-profile-img" alt="">
+								</a>
+								<a href="">
+									<img src="../assets/images/icons/pin_icon.png" id="listing-pin" alt="">
+								</a>
+							</div>
+						</div>					
+						<div class="listing col-5">
+							<div class="panel-image">
+								<a href="">
+									<img src="http://lorempixel.com/960/720/people" id="listing-img" alt="">
+								</a>
+							</div>
+							<div class="panel-body">
+								<a href="">
+									<img src="../assets/images/icons/like_icon.png" id="listing-like" alt="">
+								</a>
+								<a href="">
+									<img src="https://s3.amazonaws.com/uifaces/faces/twitter/kfriedson/48.jpg" id="listing-profile-img" alt="">
+								</a>
+								<a href="">
+									<img src="../assets/images/icons/pin_icon.png" id="listing-pin" alt="">
 								</a>
 							</div>
 						</div>
 					</div>
 				</div>
 				<div class="search-result-footer">
-					<div class="pagination-bottons-container">
+					<div class="pagination-buttons-container">
 						<div class="results_count">
-							<p>1-2 of 12 people</p>
+							<p>1-2 of 8 people</p>
 						</div>
 						<div class="pagination">
 							<ul class="pagination-list">
-								<li class="active">
-									<a href="" target="1">
-										1
+								<li>
+									<a href="" target="1" class="active">
+										<span class="page-number">1</span>
 									</a>
 								</li>
 								<li>
 									<a href="" target="2">
-										2
+										<span class="page-number">2</span>
 									</a>
 								</li>
 							</ul>
