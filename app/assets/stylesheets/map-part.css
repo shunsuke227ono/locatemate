@@ -1,23 +1,22 @@
 .map-search{
 	margin-top:47px;
-	z-index:1;
 	position:absolute;
-	overflow:auto;
 	width:100%;
+	height:auto;
 	min-width:900px;
 	background-color:#f8f8f8;
 	/*overflow:autoにすることで残り一杯かこめる*/
 	/*navとの重なり*/
 /*	background-color:green;*/
 }
-.map{
-	clear:both;
+.map-section{
+/*	clear:both;*/
 	position:relative;
 	/*ここrelativeじゃないと、slidebarのdivが上にfloatしてくる。*/
 	width:40%;
 	min-width:400px;
 	height:100vh;
-	z-index:2;
+	/*ここのzindexとfilterresultのindexの衝突*/
 	/*width and height for get space for image relatively to slidebar.*/
 /*	background-color:red;*/
 }
@@ -38,16 +37,17 @@
 	margin:0;
 	padding:0;
 /*	border:10px solid black;*/
-	width:100%;
+	width:40%;
 	min-width:400px;
 	height:100%;
+	z-index:10;
 }
 #map-canvas{
 	position:absolute;
 	height:100%;
 	/*残りのブラウザサイズ計算するjsかいてサイズはきめる*/
 	/*100%だと下に下がってる分、ちょっとはみ出してるはず。*/
-	width:40%;
+	width:100%;
 	min-width:400px;
 	/*googlemapのためには100%だった。fixedだから親の引き継がずに全体のをみて、40%が正解だったのに。divのままだったら*/
 	/*test divを足したら40%でうまくいった。なぞだけど回るのでこのままにする。*/
@@ -55,6 +55,7 @@
 	padding:0px;
 	background-color:transparent;
 	border-right:2px solid #A9A9A9;
+	z-index:10;
 }
 .sidebar{
 }

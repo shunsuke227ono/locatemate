@@ -1,201 +1,49 @@
-/*for 周りライン*/
-#friend-range{
-	width:300px;
-	height:17px;
-	position:relative;
-	margin:20px auto;
-	background:#D6D3D3;
-
-	-webkit-border-radius:3px;
-	-moz-border-radius:0px;
-	border-radius:3px;
+.slider {
+	width: 100%;
+	height: 17px;
+	position: relative;
+	background: #D6d3d3;
+			
+	-webkit-border-radius:1px;
+	-moz-border-radius: 1px;
+	border-radius: 1px;
+	z-index:100;
 }
-#friend-range .slide-bar{
-	width:288px;
-	height:5px;
-/*	background:#f8f8f8;*/
-	position:relative;
-	top:-3px;
-	left:4px;
+.slider-wrapper{
+}
+
+.time-slider{
+}
+	
+.slider .bar {
+	width: 96%;
+	height: 5px;
 	background: #f8f8f8;
-/*	background: -moz-linear-gradient(left, #1d2e38 0%, #2b4254 50%, #2b4254 100%);
-	background: -webkit-gradient(linear, left top, right top, color-stop(0%,#1d2e38), color-stop(50%,#2b4254), color-stop(100%,#2b4254));
-	background: -webkit-linear-gradient(left, #1d2e38 0%,#2b4254 50%,#2b4254 100%);
-	background: -o-linear-gradient(left, #1d2e38 0%,#2b4254 50%,#2b4254 100%);
-	background: -ms-linear-gradient(left, #1d2e38 0%,#2b4254 50%,#2b4254 100%);
-	background: linear-gradient(left, #1d2e38 0%,#2b4254 50%,#2b4254 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1d2e38', endColorstr='#2b4254',GradientType=1 );	
-
-	-webkit-border-radius: 4px;
-	-moz-border-radius: 4px;
-	border-radius: 4px;							
-*/
+	position: relative;
+	top: -3px;
+	left: 1.5%;	
+				
+	background:#f8f8f8;
+	-webkit-border-radius: 1px;
+	-moz-border-radius: 1px;
+	border-radius: 1px;
 }
-/*
-#friend-range .highlight{
-	height:2px;
-	position: absolute;
-	width: 388px;
-	top:6px;
-	left:6px;
-
-	-webkit-border-radius:4px;
-	-moz-border-radius: 4px;
-	border-radius: 4px;
-
-	background:gray;
-}
-*/
-/*for inside line*/
-input[type="range"]{
+input[type="range"] {
 	-webkit-appearance: none;
-	background-color: black;
+	background-color: #D6D3D3;
 	height: 2px;
 }
 
 input[type="range"]::-webkit-slider-thumb {
 	-webkit-appearance: none;
 	position: relative;
-	top: 0px;
+	top: -0.7px;
 	z-index: 1;
-	width: 13px;
-	height: 13px;	
+	width: 14px;
+	height: 14px;
 	cursor: pointer;
-/*	-webkit-box-shadow: 0px 6px 5px 0px rgba(0,0,0,0.6);
-	-moz-box-shadow: 0px 6px 5px 0px rgba(0,0,0,0.6);
-	box-shadow: 0px 6px 5px 0px rgba(0,0,0,0.6);
-	-webkit-border-radius: 40px;
-	-moz-border-radius: 40px;*/
-	border-radius: 2px;
-/*	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ebf1f6), color-stop(50%,#abd3ee), color-stop(51%,#89c3eb), color-stop(100%,#d5ebfb));*/
-	background-color: #f8f8f8;
-	/*color of pointer*/
-	border:1px solid black;
+	-webkit-border-radius: 1px;
+	-moz-border-radius: 1px;
+	border-radius: 1px;	
+	background-color:black;
 }
-
-input[type="range"]:hover ~ #friend-range-value,input[type="range"]:active ~ #friend-range-value {
-	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
-	filter: alpha(opacity=100);
-	opacity: 1;
-	top: -75px;
-}
-
-/* Tool Tip */
-/*out putに影響するtool。*/
-/*
-#friend-range-value {
-	color: white;
-	font-size: 10px;
-	text-align: center;
-	font-family:  Arial, sans-serif;
-	display: block;
-	color: #fff;
-	margin: 20px 0;
-	position: relative;
-	left: 44.5%;
-	padding: 6px 12px;
-	border: 1px solid black;
-
-	-webkit-box-shadow: inset 0px 1px 1px 0px rgba(255, 255, 255, 0.2), 0px 2px 4px 0px rgba(0,0,0,0.4);
-	-moz-box-shadow: inset 0px 1px 1px 0px rgba(255, 255, 255, 0.2), 0px 2px 4px 0px rgba(0,0,0,0.4);
-	box-shadow: inset 0px 1px 1px 0px rgba(255, 255, 255, 0.2), 0px 2px 4px 0px rgba(0,0,0,0.4);
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#222931), color-stop(100%,#181D21));
-
-	-webkit-border-radius: 20px;
-	-moz-border-radius: 20px;
-	border-radius: 20px;
-	width: 18px;
-	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-	filter: alpha(opacity=0);
-	opacity: 0;
-
-	-webkit-transition: all 0.5s ease;
-	-moz-transition: all 0.5s ease;
-	-o-transition: all 0.5s ease;
-	-ms-transition: all 0.5s ease;
-	transition: all 0.5s ease;
-	top: -95px;
-}*/
-
-#time-range{
-	width:300px;
-	height:17px;
-	position:relative;
-	margin:20px auto;
-	background:#D6D3D3;
-
-	-webkit-border-radius:3px;
-	-moz-border-radius:0px;
-	border-radius:3px;
-}
-#time-range .slide-bar{
-	width:288px;
-	height:5px;
-/*	background:#f8f8f8;*/
-	position:relative;
-	top:-3px;
-	left:4px;
-	background: #f8f8f8;
-/*	background: -moz-linear-gradient(left, #1d2e38 0%, #2b4254 50%, #2b4254 100%);
-	background: -webkit-gradient(linear, left top, right top, color-stop(0%,#1d2e38), color-stop(50%,#2b4254), color-stop(100%,#2b4254));
-	background: -webkit-linear-gradient(left, #1d2e38 0%,#2b4254 50%,#2b4254 100%);
-	background: -o-linear-gradient(left, #1d2e38 0%,#2b4254 50%,#2b4254 100%);
-	background: -ms-linear-gradient(left, #1d2e38 0%,#2b4254 50%,#2b4254 100%);
-	background: linear-gradient(left, #1d2e38 0%,#2b4254 50%,#2b4254 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1d2e38', endColorstr='#2b4254',GradientType=1 );	
-
-	-webkit-border-radius: 4px;
-	-moz-border-radius: 4px;
-	border-radius: 4px;							
-*/
-}
-/*
-#friend-range .highlight{
-	height:2px;
-	position: absolute;
-	width: 388px;
-	top:6px;
-	left:6px;
-
-	-webkit-border-radius:4px;
-	-moz-border-radius: 4px;
-	border-radius: 4px;
-
-	background:gray;
-}
-*/
-/*for inside line*/
-input[type="range"]{
-	-webkit-appearance: none;
-	background-color: black;
-	height: 2px;
-}
-
-input[type="range"]::-webkit-slider-thumb {
-	-webkit-appearance: none;
-	position: relative;
-	top: 0px;
-	z-index: 1;
-	width: 13px;
-	height: 13px;	
-	cursor: pointer;
-/*	-webkit-box-shadow: 0px 6px 5px 0px rgba(0,0,0,0.6);
-	-moz-box-shadow: 0px 6px 5px 0px rgba(0,0,0,0.6);
-	box-shadow: 0px 6px 5px 0px rgba(0,0,0,0.6);
-	-webkit-border-radius: 40px;
-	-moz-border-radius: 40px;*/
-	border-radius: 2px;
-/*	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ebf1f6), color-stop(50%,#abd3ee), color-stop(51%,#89c3eb), color-stop(100%,#d5ebfb));*/
-	background-color: #f8f8f8;
-	/*color of pointer*/
-	border:1px solid black;
-}
-
-input[type="range"]:hover ~ #time-range-value,input[type="range"]:active ~ #time-range-value {
-	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
-	filter: alpha(opacity=100);
-	opacity: 1;
-	top: -75px;
-}
-
-
