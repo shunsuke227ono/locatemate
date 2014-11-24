@@ -11,7 +11,7 @@ config.sessionSecret = 'sessionsecret';
 
 config.db = {
 	host: 'localhost',
-	user: 'root',
+	user: 'locatemate',
 	password: 'locatemate',
 	database: 'lm'
 };
