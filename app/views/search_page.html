@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+	<meta charset="utf-8">
+	<title>Locate Mate</title>
+	<link rel="stylesheet" type="text/css" href="../assets/stylesheets/general.css">
+	<link rel="stylesheet" type="text/css" href="../assets/stylesheets/nav-bar.css">
+	<link rel="stylesheet" type="text/css" href="../assets/stylesheets/map-part.css">
+	<link rel="stylesheet" type="text/css" href="../assets/stylesheets/filter-part.css">
+	<link rel="stylesheet" type="text/css" href="../assets/stylesheets/slider.css">
+	<link rel="stylesheet" type="text/css" href="../assets/stylesheets/result-part.css">
+	<script type="text/javascript" src="../assets/javascripts/nav-bar.js"></script>
+	<script type="text/javascript" src="../assets/javascripts/map.js"></script>
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_kkarAQJkC63z6YbLxY72huK1sc_Sxt0"></script>
+	<script type="text/javascript" src="../assets/javascripts/filter.js" ></script>
+    <script type="text/javascript">
+      function initialize() {
+         var mapOptions = {
+            center: new google.maps.LatLng(-34.933,138.5978757),
+	          zoom: 10
+ 	       };
+         var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+   	 }
+      google.maps.event.addDomListener(window, 'load', initialize);
+      </script>
+</head>
+
+<body>
+
+	<div id="navigation-base">
+		<div id="navigation-bar">
+			<a href="" class="pull-left" id="logo">
+				<img src="../assets/images/icons/main_logo.png" alt=""  id="logo-img">
+				<span id="logo-char">Locate Mate</span>
+			</a>
+			<!--for logo.-->
+			<ul class="nav pull-left" id="search-from-header">
+				<li id="search-option-list" class="dropdown search-set">
+					<select id="search-option">
+						<option value="friend" class="each-option">Friend</option>
+						<option value="place" class="each-option">Place</option>
+					</select>
+				</li>
+				<li id="header-search" class="search-set">
+					<form class="search-box search-set">
+						<!--memo: inlineはinlineにしたいものが含む全てのclassに適用される必要ある-->
+						<!--cf;https://www.udemy.com/blog/search-box-css/-->
+						<input name="location" type="text" placeholder="Locate Mate!" autocomplete="off" id="search-box-material">
+					</form>
+				</li>
+<!--			<li id="search-browse" class="dropdown search-set">
+					<a class="dropdown-toggle link-reset" href="">Browse<img src=""></a>
+					<select id="browse-menu">
+						<option value="close-friend">Close Friends</option>
+						<option value="popular">Popular</option>
+						<option value="other">Other</option>
+					</select>
+				</li>-->
+				<!-- cut browse function for minimum product.-->
+			</ul>
+
+			<span id="help" class="nav pull-right">
+				<a class="link-reset" href="">Help</a>
+			</span>
+			<span id="continue-facebook" class="nav pull-right">
+				<a href="" class="link-reset"><img src="../assets/images/icons/connect_facebook_icon.png" id="connect_facebook_img" alt="">
+				</a>
+			</span>
+		</div>
+	</div>
+
+	<div class="map-search">
+		<div class="map-section pull-left">
+			<div id="map-test"></div>
+			<!--このへんなんでかわかんないけど前にdiv置いたらうまくいった...。-->
+			<div id="map-fixed">
+				<div id="map-canvas"></div>
+			</div>
+		</div>
+		<div class="filter-result pull-left">
+			<div class="filters-header header-section">
+				<p class="header-section-title">Filters</p>
+			</div>
+			<div class="filters">
+				<div class="filter-section slide-bar-section" id="friend-range-section">
+					<div class="row">
+						<div class="body-font col-3">
+							<p>People</p>
+						</div>
+						<div class="col-8 slider-wrapper">
+								<div class="row">
+									<div class="col-4 text-left slider-label-friend">
+										<p class="body-font">Friends</p>
+									</div>
+									<div class="col-4 text-center slider-label-friend2">
+										<p class="body-font">Friends'Friends</p>
+									</div>
+									<div class="col-4 text-right slider-label-everyone">
+										<p class="body-font">Every one</p>
+									</div>
+								</div>
+							<div class="slider">
+								<input class="bar" type="range" id="rangeinput" min="1" max="3" value="1" onchange="friendvalue.value=value"/>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="filter-section slide-bar-section" id="time-range-section">
+					<div class="row">
+						<div class="body-font col-3">
+							<p>Time</p>
+						</div>
+						<div class="col-8 slider-wrapper">
+							<div class="row">
+								<div class="col-6 text-left">
+									<p class="body-font">Now</p>
+								</div>
+								<div class="col-6 text-right time-range-option-div">
+									<select id="time-range-option">
+										<option value="1week" class="body-font">1week</option>
+										<option value="1month" class="body-font">1month</option>
+										<option value="1year" class="body-font">1year</option>
+									</select>
+								</div>
+							</div>
+							<div class="slider">
+								<input class="bar" type="range" id="rangeinput" min="1" max="10" value="1" onchange="timevalue.value=value"/>
+								<output id="timevalue"></output>
+							</div>
+						</div>
+						<div class="col-2">
+						</div>
+					</div>
+				</div>
+				<div class="filter-section checkbox-section" id="place-type">
+					<div class="row">
+						<div class="body-font col-3">
+							<label id="label-post-type">Post Type</label>
+						</div>
+						<div class="check-element col-8">
+							<div class="row">
+								<div class="col-4">
+								<!--	<label id="hangout-check" class="checkbox">-->
+									<div class="row">
+										<div class="col-2 checkbox-type">
+											<input type="checkbox" name="place-type" value="hangout">
+										</div>
+										<div class="col-8 text-center">
+											<img src="../assets/images/icons/hangout_icon.png" alt="">
+											<div class="body-font">Hang out</div>
+										</div>
+										<div class="col-2">
+										</div>
+									</div>
+								<!--	</label>-->
+								</div>
+								<div class="col-4">
+								<!--	<label id="food-check" class="checkbox">-->
+									<div class="row">
+										<div class="col-2 checkbox-type">
+											<input type="checkbox" name="place-type" value="food">
+										</div>
+										<div class="col-8 text-center">
+											<img src="../assets/images/icons/food_icon.png" alt="">
+											<div class="body-font">Food</div>
+										</div>
+										<div class="col-2">
+										</div>
+									</div>
+								<!--	</label>-->
+								</div>
+								<div class="col-4">
+								<!--	<label id="event-check" class="checkbox">-->
+									<div class="row">
+										<div class="col-2 checkbox-type">
+											<input type="checkbox" name="place-type" value="event">
+										</div>
+										<div class="col-8 text-center">
+											<img src="../assets/images/icons/event_icon.png" alt="">
+											<div class="body-font">Event</div>
+										</div>
+										<div class="col-2">
+										</div>
+									</div>
+								<!--	</label>-->
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+<!--			<div id="division-line"></div>-->
+			
+			<div class="search-result">
+				<div class="header-section">
+					<p class="header-section-title">Photo Feed</p>
+				</div>
+				<div class="search-result-container">
+					<div class="row listings-container">
+						<div class="listing col-5">
+							<div class="panel-image">
+								<a href="">
+									<img src="http://lorempixel.com/960/720/nightlife" id="listing-img" alt="">
+								</a>
+							</div>
+							<div class="panel-body">
+								<a href="">
+									<img src="../assets/images/icons/like_icon.png" id="listing-like" alt="">
+								</a>
+								<a href="">
+									<img src="https://s3.amazonaws.com/uifaces/faces/twitter/salleedesign/48.jpg" id="listing-profile-img" alt="">
+								</a>
+								<a href="">
+									<img src="../assets/images/icons/pin_icon.png" id="listing-pin" alt="">
+								</a>
+							</div>
+						</div>
+						<div class="listing col-5">
+							<div class="panel-image">
+								<a href="">
+									<img src="http://lorempixel.com/960/720/food" id="listing-img" alt="">
+								</a>
+							</div>
+							<div class="panel-body">
+								<a href="">
+									<img src="../assets/images/icons/like_icon.png" id="listing-like" alt="">
+								</a>
+								<a href="">
+									<img src="https://s3.amazonaws.com/uifaces/faces/twitter/_victa/48.jpg" id="listing-profile-img" alt="">
+								</a>
+								<a href="">
+									<img src="../assets/images/icons/pin_icon.png" id="listing-pin" alt="">
+								</a>
+							</div>
+						</div>
+						<div class="listing col-5">
+							<div class="panel-image">
+								<a href="">
+									<img src="http://lorempixel.com/960/720/sports" id="listing-img" alt="">
+								</a>
+							</div>
+							<div class="panel-body">
+								<a href="">
+									<img src="../assets/images/icons/like_icon.png" id="listing-like" alt="">
+								</a>
+								<a href="">
+									<img src="https://s3.amazonaws.com/uifaces/faces/twitter/peterlandt/48.jpg" id="listing-profile-img" alt="">
+								</a>
+								<a href="">
+									<img src="../assets/images/icons/pin_icon.png" id="listing-pin" alt="">
+								</a>
+							</div>
+						</div>					
+						<div class="listing col-5">
+							<div class="panel-image">
+								<a href="">
+									<img src="http://lorempixel.com/960/720/people" id="listing-img" alt="">
+								</a>
+							</div>
+							<div class="panel-body">
+								<a href="">
+									<img src="../assets/images/icons/like_icon.png" id="listing-like" alt="">
+								</a>
+								<a href="">
+									<img src="https://s3.amazonaws.com/uifaces/faces/twitter/kfriedson/48.jpg" id="listing-profile-img" alt="">
+								</a>
+								<a href="">
+									<img src="../assets/images/icons/pin_icon.png" id="listing-pin" alt="">
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="search-result-footer">
+					<div class="pagination-buttons-container">
+						<div class="results_count">
+							<p>1-2 of 8 people</p>
+						</div>
+						<div class="pagination">
+							<ul class="pagination-list">
+								<li>
+									<a href="" target="1" class="active">
+										<span class="page-number">1</span>
+									</a>
+								</li>
+								<li>
+									<a href="" target="2">
+										<span class="page-number">2</span>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>
+
