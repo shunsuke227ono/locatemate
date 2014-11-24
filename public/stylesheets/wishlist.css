@@ -1,0 +1,9 @@
+#wishlist-container{
+	width:100%;
+	height:auto;
+	min-height:100%;
+}
+#wishlist-content{
+	position:absolute;
+	top:47px;
+}

@@ -1,0 +1,37 @@
+var dataURL = "http://localhost:3000/friendsData";
+var friendsReq = new XMLHttpRequest();
+
+friendsReq.onreadystatechange = function(){
+	if(friendsReq.readyState == 4 && friendsReq.status == 200){
+		var jsonData = JSON.parse(friendsReq.responseText);
+		console.log("a: "+jsonData);
+		var friends = jsonData.friendslocations;
+		var index = 0;
+		var infowindow = new google.maps.InfoWindow({});
+		
+		console.log("mapping " + friends);
+		while(index<friends.length){
+			var friend = friends[index];
+			var marker = new google.maps.Marker({
+				position: new google.maps.LatLng(friend.lat, friend.lng),
+				title: friend.name,
+				map :map
+			});
+			google.maps.event.addListener(marker, 'click', function(){
+				var contentImage = '<div id="content" style="width:200px; height:200px;">'
+								+'<span style="position:absolute; width:100%; bottom:0; text-align:center;">'
+								+ this.title
+								+'</span>'
+								+'</div>';
+				infowindow.setContent(contentImage);
+				infowindow.open(map, this);
+			});
+			index++;
+			markers.push(marker);
+		}
+	}
+}
+
+friendsReq.open("GET", dataURL, true);
+friendsReq.send();
+//to check code, you can see converted javascript from browser's tool 

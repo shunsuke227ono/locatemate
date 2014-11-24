@@ -1,0 +1,50 @@
+.navigation a {
+    color: #5a5a5a;
+    font-size: 11px;
+    padding: 14px 10px;
+}
+
+.navigation li {
+    display: inline;
+}
+
+.header a {
+    text-decoration: none;
+    font-size: 40px;
+    color: black;
+}
+
+body {
+    margin: 0px;
+}
+
+.picture {
+    background-image: url('http://portfolio.frontlineimage.com/data/photos/299_1wilz_pbr_l8z6233_v1.jpg');
+    height: 550px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+}
+
+.picture .container {
+    position: relative;
+    top: 100px;
+}
+
+.picture h1 {
+    color: #fff;
+    font-size: 48px;
+    font-family: 'Lobster Two', cursive;
+}
+
+.picture p {
+    color: #fff;
+    font-size: 20px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.container img {
+    width: 300px;
+    height: auto;
+}
+

@@ -1,0 +1,100 @@
+/*	//this is how to do on client side.
+	//friend marker
+	var dataURL = "http://localhost:3000/model/friends.json";
+	//to save time to type all URL later.
+	var friendsReq = new XMLHttpRequest();
+
+	//this is what happens when get the event,
+	//so doesnt matter where put this function in any order.
+	friendsReq.onreadystatechange = function(){
+		if(friendsReq.readyState==4 && friendsReq.status==200){
+			var jsonData = JSON.parse(friendsReq.responseText);
+			var friends = jsonData.photofeed;//array
+			var index = 0;
+			var infowindow = new google.maps.InfoWindow({});
+
+
+			while(index < friends.length){
+				var friend = friends[index];
+				var marker = new google.maps.Marker({
+					position: new google.maps.LatLng(friend.lat, friend.lng),
+					title: friend.name,
+					map: map,
+				});
+				google.maps.event.addListener(marker, 'click', function(){
+					var contentImage = '<div id="content" style ="width:200px;height:200px;">'
+						+'<img src="friend.panel-img" style="position:absolute; top:5px;">'
+						+'<span style = "position:absolute;width:100%; bottom:0;text-align:center; font-size:150%;">'
+						+ this.title
+						+'</span>'
+						+'</div>';
+					infowindow.setContent(contentImage);
+					infowindow.open(map, this);
+				});
+				index++;
+			}
+		}
+	}
+	friendsReq.open("GET", dataURL, true);
+	friendsReq.send();
+*/
+//until here, how to put marker on client side
+
+
+
+//from here, how to write routes/index.js in above case
+/*
+router.get('model/wishlist.json', function(req, res){
+	data.getData(function(jsonData){
+		res.send(jsonData);
+	});
+});
+//this is needed if you want to call this data from client side via url
+//but now, using above one, you can directly access jsonData by passing jsonData.wishlist.
+*/
+
+/*
+//this is needed when client send request for data
+router.get('/model/friends.json', function(req, res){
+	data.getData(function(jsonData){
+		res.send(jsonData);
+	});
+});
+*/
+
+/*when making map.js by handlebars. when using facebook api, because we have to send req after the facebook data request, we can't make by handlebars*/
+/*
+var marker = new google.maps.Marker({
+	position: new google.maps.LatLng({{this.lat}}, {{this.lng}}),
+	title: this.name,
+	map: map,
+});
+
+var infowindow = new google.maps.InfoWindow({});
+google.maps.event.addListener(marker, 'click', function(){
+	var contentImage = '<div id="content" style ="width:200px;height:200px;">'
+		+'<img src="{{this.panel-img}}" style="position:absolute; top:5px; max-width:100%">'
+		+'<span style = "position:absolute;width:100%; bottom:0;text-align:center; font-size:150%;">'
+		+ '{{this.name}}'
+		+'</span>'
+		+'</div>';
+	infowindow.setContent(contentImage);
+	infowindow.open(map, this);
+});
+*/
+console.log('mapping');
+
+/*
+	console.log('a');
+	data.getData(function(jsonData){
+		res.render('facebook_map.handlebars',{friendData:jsonData.photofeed, layout:false});
+	});
+*/
+
+
+about getting permission for user_location
+- i got error just because the user didnt set their current location. it was not the problem of permission scope.
+- but i need to think about how to handle when user dont set their location, as a actual problem.
+- maybe like if location.name = null, see tagged place, or make them to set their location on our app.
+- error handling
+- permission didnt show up just because i already get the permission from the user.

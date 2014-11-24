@@ -1,0 +1,85 @@
+function statusChangeCallback(response){
+	console.log('statusChangeCallback');
+	console.log(response);
+	if(response.status ==='connected'){
+
+		authToServer(response,
+			function(){
+				//after sending auth, add friends.
+				addFriendsToMap();
+		});
+		var currentPage = location.href;
+		if(currentPage=="http://localhost:3000/"){
+			window.location.assign("http://localhost:3000/search_page.html");
+		}
+	}else if(response.status==='not_authorized'){
+		console.log("not authorized");
+		var currentPage = location.href;
+		if(currentPage == "http://localhost:3000/"){
+			document.getElementById('status').innerHTML = 'Please log '+ 'into this app.';
+		}else{
+			window.location.assign("http://localhost:3000/");
+		}
+	}else{
+		var currentPage = location.href;
+		console.log("not login");
+		if(currentPage == "http://localhost:3000/"){
+			document.getElementById('status').innerHTML = 'Please log '+'into Facebook.';
+		}
+	}
+}
+
+function checkLoginState(){
+	FB.getLoginStatus(function(response){
+		statusChangeCallback(response);
+	});
+}
+
+window.fbAsyncInit = function(){
+	FB.init({
+		appId:'287218951475164',
+		cookie: true, //enabe cookies to allow the server to access
+				  //the session
+		xfbml: true, //parse social plugin on this page
+		version: 'v2.1'
+	});
+
+	FB.getLoginStatus(function(response){
+		statusChangeCallback(response);
+	});
+
+};
+
+//load the SDK asynchronously
+(function(d,s,id){
+	var js, fjs = d.getElementsByTagName(s)[0];
+	if(d.getElementById(id)) return;
+	js = d.createElement(s); js.id = id;
+	js.src = "http://connect.facebook.net/en_US/sdk.js";
+	fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+
+function authToServer(authResponse, callback){
+	//callback will be requesting frined data and needed infos from facebook to make page.
+	var authReq = new XMLHttpRequest();
+
+	authReq.onreadystatechange = function(){
+		if(authReq.readyState == 4 && authReq.status == 200){
+			console.log('logged in with server');
+			callback();
+		}
+	}
+	authReq.open("POST", "http://localhost:3000/auth", true);
+	authReq.setRequestHeader('Content-Type','application/json');
+	authReq.send(JSON.stringify(authResponse));
+}
+
+{{>map_js}}
+
+var markers = [];
+
+function addFriendsToMap(){
+	{{>friend_marker}}
+}
+
+{{>filter_js}}

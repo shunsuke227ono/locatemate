@@ -1,0 +1,112 @@
+<div class="filters-header header-section">
+	<p class="header-section-title">Filters</p>
+</div>
+<div class="filters">
+	<div class="filter-section slide-bar-section" id="friend-range-section">
+		<div class="row">
+			<div class="body-font col-3">
+				<p>People</p>
+			</div>
+			<div class="col-8 slider-wrapper">
+					<div class="row">
+						<div class="col-4 text-left slider-label-friend">
+							<p class="body-font">Friends</p>
+						</div>
+						<div class="col-4 text-center slider-label-friend2">
+							<p class="body-font">Friends'Friends</p>
+						</div>
+						<div class="col-4 text-right slider-label-everyone">
+							<p class="body-font">Every one</p>
+						</div>
+					</div>
+				<div class="slider">
+					<input class="bar" id="peopleRange" type="range" id="friendrangeinput" min="1" max="3" value="1"/>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="filter-section slide-bar-section" id="time-range-section">
+		<div class="row">
+			<div class="body-font col-3">
+				<p>Time</p>
+			</div>
+			<div class="col-8 slider-wrapper">
+				<div class="row">
+					<div class="col-6 text-left">
+						<p class="body-font">Now</p>
+					</div>
+					<div class="col-6 text-right time-range-option-div">
+						<select id="time-range-option">
+							<option value="1week" class="body-font">1week</option>
+							<option value="1month" class="body-font">1month</option>
+							<option value="1year" class="body-font">1year</option>
+						</select>
+					</div>
+				</div>
+				<div class="slider">
+					<input class="bar" type="range" id="timerangeinput" min="1" max="10" value="1" onchange="timevalue.value=value"/>
+					<output id="timevalue"></output>
+				</div>
+			</div>
+			<div class="col-2">
+			</div>
+		</div>
+	</div>
+	<div class="filter-section checkbox-section" id="place-type">
+		<div class="row">
+			<div class="body-font col-3">
+				<label id="label-post-type">Post Type</label>
+			</div>
+			<div class="check-element col-8">
+				<div class="row">
+					<div class="col-4">
+					<!--	<label id="hangout-check" class="checkbox">-->
+						<div class="row">
+							<div class="col-2 checkbox-type">
+								<input type="checkbox" name="place-type" value="hangout">
+							</div>
+							<div class="col-8 text-center">
+								<img src="images/icons/hangout_icon.png" alt="">
+								<div class="body-font">Hang out</div>
+							</div>
+							<div class="col-2">
+							</div>
+						</div>
+					<!--	</label>-->
+					</div>
+					<div class="col-4">
+					<!--	<label id="food-check" class="checkbox">-->
+						<div class="row">
+							<div class="col-2 checkbox-type">
+								<input type="checkbox" name="place-type" value="food">
+							</div>
+							<div class="col-8 text-center">
+								<img src="images/icons/food_icon.png" alt="">
+								<div class="body-font">Food</div>
+							</div>
+							<div class="col-2">
+							</div>
+						</div>
+					<!--	</label>-->
+					</div>
+					<div class="col-4">
+					<!--	<label id="event-check" class="checkbox">-->
+						<div class="row">
+							<div class="col-2 checkbox-type">
+								<input type="checkbox" name="place-type" value="event">
+							</div>
+							<div class="col-8 text-center">
+								<img src="images/icons/event_icon.png" alt="">
+								<div class="body-font">Event</div>
+							</div>
+							<div class="col-2">
+							</div>
+						</div>
+					<!--	</label>-->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+

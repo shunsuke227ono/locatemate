@@ -1,0 +1,62 @@
+$('document').ready(function(){
+	var people = document.getElementById("peopleRange");
+	people.addEventListener("change", function(){
+		var peopleReq = new XMLHttpRequest();
+		if(people.value==1){
+			var dataURL = "http://localhost:3000/rangeFriend";
+		}else if(people.value==2){
+			var dataURL = "http://localhost:3000/rangeFriendsfriend";
+		}else if(people.value==3){
+			var dataURL = "http://localhost:3000/rangeEveryone";
+		}
+		
+		peopleReq.onreadystatechange = function(){
+			if(peopleReq.readyState==4 && peopleReq.status==200){
+				
+				clearOverlays();
+				markers =[];
+				console.log("removed");
+
+				console.log("people range updaate.");
+				var jsonData = JSON.parse(peopleReq.responseText);
+				var peopleData = jsonData.locations;//locations is the name of property
+				var index = 0;
+				var infowindow = new google.maps.InfoWindow({});
+
+				while(index < peopleData.length){
+					var person = peopleData[index];
+					console.log("adding " + person.name);
+					console.log("person data: "+person.lat+","+person.lng);
+					var marker = new google.maps.Marker({
+						position: new google.maps.LatLng(person.lat, person.lng),
+						title: person.name,
+						map: map
+					});
+					google.maps.event.addListener(marker, 'click', function(){
+						var contentImage = '<div id="content" style="width:200px; height:200px;">'
+							+ '<span style="position:absolute; width:100%; bottom:0; text-align:center;">'
+							+ this.title + " new!"
+							+'</span>'
+							+'</div>';
+						infowindow.setContent(contentImage);
+						infowindow.open(map, this);
+
+					});
+					index++;
+					markers.push(marker);
+				}
+			}
+		}
+
+		peopleReq.open("GET", dataURL, true);
+		peopleReq.send();
+	});
+
+});
+
+function clearOverlays(){
+	for(var i=0; i<markers.length; i++){
+		markers[i].setMap(null);
+	}
+	markers = [];
+}

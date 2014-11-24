@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Facebook Login JavaScript Example</title>
+<meta charset="UTF-8">
+</head>
+<body>
+<script type="text/javascript" src="javascripts/facebook_map.js"></script>
+<!--
+	below we include the login button social plugin. this button uses
+	the javascript SDK to present a graphical login button that triggers
+	the FB.login() function when clicked.
+-->
+	<fb:login-button scope="user_friends, user_location, user_tagged_places" onlogin="checkLoginState();"> 
+	</fb:login-button>
+
+	<div id="status">
+	</div>
+</body>
+</html>

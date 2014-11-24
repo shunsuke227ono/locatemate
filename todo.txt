@@ -1,0 +1,7 @@
+now
+-make photofeed after facebook login
+-delete function in wishlist
+
+-last prac
+-facebook log out
+-login -> searchpage
